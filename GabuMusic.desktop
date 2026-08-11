@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GabuMusic
+GenericName=VoiceGab
+Comment=Слава богу что ВойсМода нету на Линукс
+Exec=$HOME/.local/share/applications/GabuMusic/Daddy.sh
+Icon=steam_icon_413150
+Terminal=false
+Categories=Audio;Music;Gabu;
