@@ -5,7 +5,7 @@
 
 ### Use this one-liner to install GabuMusic
 ```bash
-curl -sSL https://raw.githubusercontent.com/boopidoopiloopi/linuxvoicemod/main/installer.sh | bash
+bash -c "$(curl -sSL https://raw.githubusercontent.com/boopidoopiloopi/linuxvoicemod/main/installer.sh)"
 ```
 
 ### How it works
