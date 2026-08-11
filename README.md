@@ -2,6 +2,12 @@
 > [!WARNING]
 > **Prerequisite Warning:**
 > **EasyEffects must be installed and running** before executing this script if you want your microphone voice to pass through noise suppression (RNNoise / DeepFilterNet) and your headphones to use your custom EQ. If EasyEffects is not running, the script will fall back to using your raw hardware mic and direct speaker output.
+
+### Use this one-liner to install GabuMusic
+```bash
+curl -sSL https://raw.githubusercontent.com/boopidoopiloopi/linuxvoicemod/main/installer.sh | bash
+```
+
 ### How it works
 To create this, we will be making 2 virtual audio nodes and 3 native PipeWire loopbacks:
 1. **Общий-Звук** (Virtual Sink) - the sink into which all playback audio streams (e.g. music apps, browser) will be routed by default.
