@@ -61,8 +61,8 @@ echo "=== Installation Complete! ==="
 echo "Please ensure EasyEffects is running and properly configured for your hardware mic!"
 echo ""
 
-# Prompt the user to read the README
-read -p "Would you like to read the README instructions now? [Y/n] " -n 1 -r
+# Prompt the user to read the README (force reading from terminal)
+read -p "Would you like to read the README instructions now? [Y/n] " -n 1 -r < /dev/tty
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]; then
     # -p opens it in a pager so they can scroll up and down
