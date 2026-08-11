@@ -10,7 +10,7 @@ echo "=== GabuMusic Installer ==="
 # - pipewire-audio: provides pw-loopback
 # - pwvucontrol: needed for Daddy.sh
 # - libnotify: provides notify-send for Daddy.sh
-DEPS=(git easyeffects pipewire pipewire-pulse pipewire-audio pwvucontrol libnotify)
+DEPS=(git easyeffects pipewire pipewire-pulse pipewire-audio pwvucontrol libnotify glow)
 
 echo "Checking dependencies..."
 # pacman -T returns only the packages that are NOT installed
@@ -55,5 +55,18 @@ if [ -f "$TARGET_DIR/GabuMusic.desktop" ]; then
     update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
 fi
 
+# ... (rest of your installer script) ...
+
 echo "=== Installation Complete! ==="
 echo "Please ensure EasyEffects is running and properly configured for your hardware mic!"
+echo ""
+
+# Prompt the user to read the README
+read -p "Would you like to read the README instructions now? [Y/n] " -n 1 -r
+echo ""
+if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]; then
+    # -p opens it in a pager so they can scroll up and down
+    glow -p "$TARGET_DIR/README.md"
+else
+    echo "You can read it later by running: glow $TARGET_DIR/README.md"
+fi
