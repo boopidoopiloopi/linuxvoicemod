@@ -67,7 +67,7 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]; then
     # Removed the -p flag. It will now print standard colored text to your terminal,
     # and you can just scroll up to read it natively without breaking the window!
-    glow "$TARGET_DIR/README.md"
+    glow -p "$TARGET_DIR/README.md"
 else
     echo "You can read it later by running: glow $TARGET_DIR/README.md"
 fi
