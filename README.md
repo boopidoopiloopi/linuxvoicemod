@@ -37,6 +37,12 @@ easyeffects
 *(This ensures Easy Effects processes your real microphone and doesn't accidentally try to capture `VirtMic.monitor` when it becomes default).*
 
 ### Script installation
+#### Automated
+```bash
+bash -c "$(curl -sSL https://raw.githubusercontent.com/boopidoopiloopi/linuxvoicemod/main/installer.sh)"
+```
+
+#### Manual
 
 1. Create a `.desktop` file in `~/.local/share/applications/GabuMusic/GabuMusic.desktop`
 
