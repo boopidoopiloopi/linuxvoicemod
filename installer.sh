@@ -71,7 +71,7 @@ read -p "Would you like to read the README instructions now? [Y/n] " -n 1 -r
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]; then
     # -p opens it in a pager so they can scroll up and down (like 'less')
-    glow -p "$TARGET_DIR/README.md"
+    glow "$TARGET_DIR/README.md"
 else
     echo "You can read it later by running: glow $TARGET_DIR/README.md"
 fi
