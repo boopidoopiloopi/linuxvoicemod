@@ -6,3 +6,4 @@
 (pwvucontrol -t 4 > /dev/null 2>&1 &)
 
 notify-send "MMpgghhh~" "I did it Minor... are you proud of me?"
+notify-send "ЧУВАКК!!!" "НЕ ЗАБУДЬ ВЫБРАТЬ ВИРТ-МИКРО В ДИСЕ!!!! ЧЕЕЕЛ"
