@@ -43,21 +43,29 @@ pactl load-module module-null-sink \
     sink_name=VirtMic \
     sink_properties="device.description='Вирт-Микро' session.suspend-timeout-seconds=0"
 
+# Ensure sinks are unmuted and at 100%
+pactl set-sink-mute GeneralSound false
 pactl set-sink-volume GeneralSound 100%
+pactl set-sink-mute VirtMic false
 pactl set-sink-volume VirtMic 100%
 
-# 5. KEEP your headphones/EasyEffects as default sink for normal apps
+# CRITICAL FIX: Unmute and set volume for the monitor of VirtMic (what Discord records)
+pactl set-source-mute VirtMic.monitor false
+pactl set-source-volume VirtMic.monitor 100%
+pactl set-source-mute GeneralSound.monitor false
+pactl set-source-volume GeneralSound.monitor 100%
+
+# 5. Set defaults
 pactl set-default-sink "$HEADPHONE_TARGET"
+# Do NOT set VirtMic.monitor as default source to avoid conflicts
+pactl set-default-source "$MIC_SOURCE"
 
-# 6. Set VirtMic as default source for recording apps (Discord, OBS, Steam)
-pactl set-default-source VirtMic.monitor
-
-# Move active recording apps to VirtMic.monitor (done BEFORE launching loopbacks so loopbacks aren't moved)
+# 6. Move Discord (and other recording apps) to VirtMic.monitor
 pactl list short source-outputs | awk '{print $1}' | while read -r STREAM_ID; do
     pactl move-source-output "$STREAM_ID" VirtMic.monitor 2>/dev/null || true
 done
 
-sleep 0.3
+sleep 0.5
 
 # 7. Start Loopbacks
 echo "Starting Native PipeWire Loopbacks..."
@@ -78,3 +86,4 @@ nohup pw-loopback \
     --playback-props='{ target.object = "VirtMic" node.name = "VoiceStream_Play" node.description = "Мой Голос на Стрим" }' >/dev/null 2>&1 &
 
 echo "Setup complete!"
+echo "IMPORTANT: Open Discord Settings -> Voice & Video -> and manually set Input Device to 'Вирт-Микро'"
